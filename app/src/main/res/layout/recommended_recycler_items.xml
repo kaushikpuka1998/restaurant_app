@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,49 +8,68 @@
 
     <ImageView
         android:id="@+id/recoWhole"
-        android:layout_width="413dp"
-        android:layout_height="227dp"
+        android:layout_width="175dp"
+        android:layout_height="221dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="116dp"
+
+
+
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recommendedItemPic"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/recommendedItemPic"
-        android:layout_width="96dp"
-        android:layout_height="84dp"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/asiafood1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="4dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/recommendedItem"
-        android:layout_width="125dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Item_name"
         android:textSize="21dp"
+        android:layout_below="@id/recommendedItemPic"
+        android:layout_marginLeft="125dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recommendedItemPic"
-        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/recommStar"
-        android:layout_width="14dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/recommendedItemPic"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recommendedItem"
-        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintVertical_bias="0.007"
         app:srcCompat="@drawable/ic_star_black_24dp"
         tools:ignore="MissingConstraints" />
 
@@ -58,30 +77,37 @@
         android:id="@+id/RecommendedRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="31dp"
         android:fontFamily="@font/ubuntu_mono"
         android:text="star_value"
-        android:textSize="9dp"
+        android:textSize="14dp"
+        android:layout_toRightOf="@id/recommendedItemPic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recommendedItem"
-        app:layout_constraintVertical_bias="0.017"
+        app:layout_constraintVertical_bias="0.021"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/RecommendedPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/RecommendedRating"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="138dp"
+        android:layout_toRightOf="@+id/textView4"
         android:fontFamily="@font/ubuntu_mono"
         android:text="Price"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecommendedRating"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintTop_toTopOf="@+id/recommendedItem"
+        app:layout_constraintVertical_bias="0.231"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -90,12 +116,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/ubuntu_mono"
         android:text="delivery Time"
+        android:layout_marginLeft="125dp"
+        android:layout_below="@id/recommendedItem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecommendedRating"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -104,24 +132,33 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/ubuntu_mono"
         android:text="Charges"
+        android:layout_marginLeft="125dp"
+        android:layout_below="@id/recommended_deliverytime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecommendedRating"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="29dp"
         android:layout_height="21dp"
+        android:layout_below="@id/recommended_deliv_charges"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="69dp"
         android:fontFamily="@font/ubuntu_mono"
+
         android:text="Rs."
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecommendedRating"
-        app:layout_constraintVertical_bias="0.058"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.233"
         tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
