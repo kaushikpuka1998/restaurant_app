@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.resturent_app.Retrofit.ApiInterface;
 import com.example.resturent_app.Retrofit.RetrofitClient;
+import com.example.resturent_app.model.Allmenu;
 import com.example.resturent_app.model.FoodDatum;
 import com.example.resturent_app.model.Popular;
 import com.example.resturent_app.model.Recommended;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     PopularAdapter popularAdapter;
     RecommendedAdapter recommendedAdapter;
-    RecyclerView popularRecyclerView,recommendedRecyclerView ;
+    AllMenuAdapter allMenuAdapter;
+    RecyclerView popularRecyclerView,recommendedRecyclerView,Allmenurecycleview ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 getRecommendedData(foodDataList.get(0).getRecommended());
                 getPopulateData(foodDataList.get(0).getPopular());
+                getAllmenuData(foodDataList.get(0).getAllmenu());
 
 
             }
@@ -69,12 +72,24 @@ public class MainActivity extends AppCompatActivity {
 
     private  void getRecommendedData(List<Recommended> recommendedList)
     {
-        popularRecyclerView = findViewById(R.id.recomrecyclerView);
+        recommendedRecyclerView = findViewById(R.id.recomrecyclerView);
         recommendedAdapter= new RecommendedAdapter(this,recommendedList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        popularRecyclerView.setLayoutManager(layoutManager);
-        popularRecyclerView.setAdapter(recommendedAdapter);
+        recommendedRecyclerView.setLayoutManager(layoutManager);
+        recommendedRecyclerView.setAdapter(recommendedAdapter);
     }
+
+    private  void getAllmenuData(List<Allmenu> allmenuList)
+    {
+        Allmenurecycleview = findViewById(R.id.allmenurecycle);
+        allMenuAdapter= new AllMenuAdapter(this,allmenuList);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        Allmenurecycleview.setLayoutManager(layoutManager);
+        Allmenurecycleview.setAdapter(allMenuAdapter);
+    }
+
+
 
 }

@@ -1,6 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
+    android:layout_height="110dp"
+    android:background="@drawable/group_3">
+
+    <ImageView
+        android:id="@+id/allmenuitempic"
+        android:layout_width="131dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/popularfood1" />
+
+    <TextView
+        android:id="@+id/AllmenuItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="TextView"
+        android:layout_toRightOf="@id/allmenuitempic"
+        android:layout_marginTop="5sp"
+        android:textColor="@android:color/background_dark"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+    <TextView
+        android:id="@+id/Allmenu_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="TextView"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/allmenuitempic"
+        app:layout_constraintStart_toStartOf="@+id/AllmenuItemName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Allmenu_note"
+        app:srcCompat="@drawable/ic_star_black_24dp"
+        tools:layout_editor_absoluteY="69dp"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@id/allmenuitempic"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/Allmenurating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="3.9"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@id/imageView4"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/AllmenuDeliverytime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="TextView"
+        android:layout_toRightOf="@id/allmenuitempic"
+        android:layout_marginTop="85dp"
+
+
+        android:textColor="@color/Red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Allmenurating"
+        app:layout_constraintTop_toBottomOf="@+id/allmenudeliverycharge"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="₹"
+        android:textColor="@color/White"
+        android:textSize="17dp"
+        android:layout_marginTop="45dp"
+        android:layout_toLeftOf="@id/AllmenuPrice"
+        tools:layout_editor_absoluteX="319dp"
+        tools:layout_editor_absoluteY="33dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/AllmenuPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_mono"
+        android:text="Price"
+        android:textColor="@color/White"
+        android:textSize="17dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="32dp"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="33dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/allmenudeliverycharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:layout_toRightOf="@id/allmenuitempic"
+        android:fontFamily="@font/ubuntu_mono"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/Red"
+        android:text="DeliveryCharge"
+        app:layout_constraintTop_toBottomOf="@+id/Allmenurating"
+        tools:layout_editor_absoluteX="185dp" />
 </RelativeLayout>

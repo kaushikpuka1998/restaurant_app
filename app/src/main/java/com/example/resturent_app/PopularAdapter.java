@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.resturent_app.model.Popular;
-import com.example.resturent_app.model.Recommended;
+
 
 import java.util.List;
 
@@ -37,22 +37,6 @@ public class PopularAdapter  extends RecyclerView.Adapter<PopularAdapter.Popular
 
         return new PopularViewHolder(view);
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
-
-
-        holder.popularName.setText(popularList.get(position).getName());
-
-
-        Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImageview);
-    }
-
-    @Override
-    public int getItemCount() {
-        return popularList.size();
-    }
-
     public static class PopularViewHolder extends RecyclerView.ViewHolder
     {
         ImageView popularImageview;
@@ -68,4 +52,20 @@ public class PopularAdapter  extends RecyclerView.Adapter<PopularAdapter.Popular
             popularImageview= itemView.findViewById(R.id.Popular_image);
         }
     }
+    @Override
+    public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
+
+
+        holder.popularName.setText(popularList.get(position).getName());
+
+
+        Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImageview);
+    }
+
+    @Override
+    public int getItemCount() {
+        return popularList.size();
+    }
+
+
 }

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.RecommendedViewHolder> {
 
-    Context context;
+    private Context context;
     private List<Recommended> recommendedList;
 
     public RecommendedAdapter(Context context, List<Recommended> recommendedList) {
@@ -33,10 +33,6 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
 
         return new RecommendedViewHolder(view);
 
-    }
-    @Override
-    public int getItemCount() {
-        return recommendedList.size();
     }
 
     public static class RecommendedViewHolder extends  RecyclerView.ViewHolder {
@@ -66,11 +62,17 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         holder.recommendedRating.setText(recommendedList.get(position).getRating());
         holder.RecommendedDeliveryTime.setText(recommendedList.get(position).getDeliveryTime());
         holder.recommendedprize.setText(recommendedList.get(position).getPrice());
-    holder.Recommendedcharges.setText(recommendedList.get(position).getDeliveryCharges());
+        holder.Recommendedcharges.setText(recommendedList.get(position).getDeliveryCharges());
         Glide.with(context).load(recommendedList.get(position).getImageUrl()).into(holder.recommendedImage);
 
 
 
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return recommendedList.size();
     }
 
 
