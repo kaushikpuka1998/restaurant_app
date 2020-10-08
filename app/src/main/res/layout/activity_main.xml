@@ -98,7 +98,7 @@
         android:layout_marginTop="365dp"
         android:fontFamily="@font/ubuntu_mono"
 
-        android:text="Reccommended For You"
+        android:text="Recommended For You"
 
         android:textSize="34dp"
         app:layout_constraintBottom_toBottomOf="parent"
