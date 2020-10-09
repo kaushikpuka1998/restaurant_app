@@ -1,0 +1,59 @@
+[33mcommit ba09f1c51515953ee5898017afd9441fe143578b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 18:29:32 2020 +0530
+
+    Added Bottom_sheet_dialog and MAking Grand_total
+
+[33mcommit 4a91d23b7b573559d465f8ca7256c686fc47c69e[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 07:50:25 2020 +0530
+
+    Splash-Screen Added
+
+[33mcommit c5a6d84dbbd52505e99b288b46ff90c9ba9ee70f[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 06:25:48 2020 +0530
+
+    All recycleview connected by foodActivity Page
+
+[33mcommit 567bf32e10712a35d6d3456e1db44a4b60aa5495[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 04:05:17 2020 +0530
+
+    All Menu RecyclerView Added And recommended Part renewed
+
+[33mcommit 189bb01628cac38474b5f0685ce779e52e4fa927[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 04:04:30 2020 +0530
+
+    All Menu RecyclerView Added And recommended Part renewed
+
+[33mcommit d87a36ef32f4dc3e6eb6973e626856c77677948b[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Fri Oct 9 00:54:36 2020 +0530
+
+    Recommended_recycle_view Ui Change
+
+[33mcommit 8b5f88da6ffc3b3c8ec97ebcd1577953992cda1c[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Thu Oct 8 23:02:08 2020 +0530
+
+    Recommended  UI Changed
+
+[33mcommit 2d1f0cb6d30be1cb60966ae387ddca4edd1e662a[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Thu Oct 8 22:05:47 2020 +0530
+
+    Recommendation spell wrong
+
+[33mcommit f9f595371e8e0a6eb741ee1c4d61ddfa4a97dd65[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Thu Oct 8 22:03:24 2020 +0530
+
+    misc and  vcs Change
+
+[33mcommit 62f2149647529fddee85b3322a591de55573be9c[m
+Author: Kaushik Ghosh <kaushikghosh199832@gmail.com>
+Date:   Thu Oct 8 21:35:24 2020 +0530
+
+    first commit
