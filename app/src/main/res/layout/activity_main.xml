@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/popular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="128dp"
         android:fontFamily="@font/ubuntu_mono_bold"
-        android:text="Popular This Week"
+        android:text="@string/popular_this_week"
         android:textColor="@color/Black"
 
-        android:textSize="34dp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,17 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.221"
-        tools:ignore="MissingConstraints" />
+        />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/ubuntu_mono_bold"
-        android:text="Indian Food"
-        android:textSize="34dp"
+        android:text="@string/indian_food"
+        android:textSize="34sp"
         android:textColor="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,13 +43,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
-        tools:ignore="MissingConstraints" />
+     />
 
     <ImageView
         android:id="@+id/cart"
         android:layout_width="46dp"
         android:layout_height="41dp"
-        android:layout_marginLeft="350dp"
+        android:layout_marginStart="350dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="636dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +57,7 @@
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
-        tools:ignore="MissingConstraints" />
+       />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -68,61 +69,64 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/popular"
         app:layout_constraintVertical_bias="0.085"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp" />
+         />
 
     <TextView
         android:id="@+id/Recommended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/Black"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="285dp"
 
 
         android:fontFamily="@font/ubuntu_mono_bold"
 
-        android:text="Recommended For You"
-        android:textSize="34dp"
+        android:text="@string/recommended_for_you"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.221"
-        tools:ignore="MissingConstraints" />
+      />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recomrecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+        android:layout_width="471dp"
+        android:layout_height="308dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
         android:layout_marginTop="305dp"
+        android:layout_marginEnd="-6dp"
         android:clickable="true"
+        android:focusable="true"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/popular"
-        app:layout_constraintVertical_bias="0.085"
-        tools:ignore="MissingConstraints,UnknownId"
-        tools:layout_editor_absoluteX="-1dp" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <EditText
         android:id="@+id/searchbar"
         android:layout_width="387dp"
         android:layout_height="50dp"
         android:background="@drawable/search_bg"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:drawableStart="@drawable/ic_search_black_24dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_mono"
-        android:hint="search"
+        android:hint="@string/search"
         android:layout_marginTop="72dp"
         android:inputType="textPersonName"
         android:paddingStart="16dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.145"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp" />
+
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView2"
@@ -130,21 +134,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="167dp"
         android:fontFamily="@font/ubuntu_mono_bold"
-        android:text="All menu"
+        android:text="@string/all_menu"
         android:textColor="@color/Black"
-        android:textSize="20dp" />
+        android:textSize="30sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/allmenurecycle"
-        android:layout_width="420dp"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginBottom="1dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allmenurecycle"
+            android:layout_width="469dp"
+            android:layout_height="216dp"
+            android:layout_below="@+id/textView2"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-158dp"
+
+            android:padding="10dp" />
+
+
 
 </RelativeLayout>
+

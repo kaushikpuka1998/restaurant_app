@@ -1,6 +1,7 @@
 package com.example.resturent_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,8 @@ import java.util.List;
 
 public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.RecommendedViewHolder> {
 
-    private Context context;
-    private List<Recommended> recommendedList;
+     Context context;
+     List<Recommended> recommendedList;
 
     public RecommendedAdapter(Context context, List<Recommended> recommendedList) {
         this.context = context;
@@ -56,7 +57,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecommendedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecommendedViewHolder holder, final int position) {
 
         holder.recommendedItemName.setText(recommendedList.get(position).getName());
         holder.recommendedRating.setText(recommendedList.get(position).getRating());
@@ -66,6 +67,19 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         Glide.with(context).load(recommendedList.get(position).getImageUrl()).into(holder.recommendedImage);
 
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,FoodActivity.class);
+                i.putExtra("name",recommendedList.get(position).getName());
+                i.putExtra("price",recommendedList.get(position).getPrice());
+                i.putExtra("rating",recommendedList.get(position).getRating());
+                i.putExtra("image",recommendedList.get(position).getImageUrl());
+
+                context.startActivity(i);
+
+            }
+        });
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.resturent_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class AllMenuAdapter extends RecyclerView.Adapter<AllMenuAdapter.AllmenuV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AllmenuViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AllmenuViewHolder holder, final int position) {
             holder.allmenuItemName.setText(allmenuList.get(position).getName());
             holder.Allmenuitemnote.setText(allmenuList.get(position).getNote());
             holder.allmenuRating.setText(allmenuList.get(position).getRating());
@@ -45,6 +46,20 @@ public class AllMenuAdapter extends RecyclerView.Adapter<AllMenuAdapter.AllmenuV
 
 
             Glide.with(context).load(allmenuList.get(position).getImageUrl()).into(holder.allmenuImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,FoodActivity.class);
+                i.putExtra("name",allmenuList.get(position).getName());
+                i.putExtra("price",allmenuList.get(position).getPrice());
+                i.putExtra("rating",allmenuList.get(position).getRating());
+                i.putExtra("image",allmenuList.get(position).getImageUrl());
+
+                context.startActivity(i);
+
+            }
+        });
     }
 
     @Override

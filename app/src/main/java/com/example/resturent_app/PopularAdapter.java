@@ -1,6 +1,7 @@
 package com.example.resturent_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ import java.util.List;
 
 public class PopularAdapter  extends RecyclerView.Adapter<PopularAdapter.PopularViewHolder> {
 
-    private Context context;
-    private List<Popular> popularList;
+     Context context;
+     List<Popular> popularList;
 
     public PopularAdapter(Context context, List<Popular> popularList) {
         this.context = context;
@@ -53,13 +54,27 @@ public class PopularAdapter  extends RecyclerView.Adapter<PopularAdapter.Popular
         }
     }
     @Override
-    public void onBindViewHolder(@NonNull PopularViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PopularViewHolder holder, final int position) {
 
 
         holder.popularName.setText(popularList.get(position).getName());
 
 
         Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImageview);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,FoodActivity.class);
+                i.putExtra("name",popularList.get(position).getName());
+                i.putExtra("price",popularList.get(position).getPrice());
+                i.putExtra("rating",popularList.get(position).getRating());
+                i.putExtra("image",popularList.get(position).getImageUrl());
+
+                context.startActivity(i);
+
+            }
+        });
     }
 
     @Override

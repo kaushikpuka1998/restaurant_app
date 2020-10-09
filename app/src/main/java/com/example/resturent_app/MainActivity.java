@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.resturent_app.Retrofit.ApiInterface;
@@ -28,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
     RecommendedAdapter recommendedAdapter;
     AllMenuAdapter allMenuAdapter;
     RecyclerView popularRecyclerView,recommendedRecyclerView,Allmenurecycleview ;
+    EditText search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        search = (EditText)findViewById(R.id.searchbar);
         apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
 
         Call<List<FoodDatum>> call = apiInterface.getAllData();

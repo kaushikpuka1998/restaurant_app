@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Resturent_app</string>
+    <string name="indian_food">Indian Food</string>
+    <string name="recommended_for_you">Recommended For You</string>
+    <string name="all_menu">All menu</string>
+    <string name="search">search</string>
+    <string name="popular_this_week">Popular This Week</string>
 </resources>
