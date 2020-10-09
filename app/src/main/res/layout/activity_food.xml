@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:contextClickable="false"
     tools:context=".FoodActivity">
 
     <ImageView
@@ -53,7 +54,8 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Dhosa"
-        android:textSize="34dp"
+        android:textColor="@color/Black"
+        android:textSize="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
 
@@ -65,6 +67,7 @@
         android:layout_marginTop="12dp"
         android:clickable="false"
         android:contextClickable="false"
+        android:max="5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fooditemname" />
 
@@ -74,9 +77,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="78dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
         android:text="2.3"
         android:textSize="28dp"
-        android:fontFamily="@font/ubuntu_mono_bold"
         app:layout_constraintStart_toEndOf="@+id/foodratingBar"
         app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
 
@@ -125,8 +128,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
-        android:text="Product Description:"
         android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="Product Description:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
 
@@ -134,14 +137,14 @@
         android:id="@+id/foodaddtocart"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/greenshape"
+        android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Add To the Cart"
         android:textAllCaps="false"
-        android:textSize="27dp"
-        android:fontFamily="@font/ubuntu_mono_bold"
-        android:background="@drawable/greenshape"
         android:textColor="@color/White"
+        android:textSize="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
