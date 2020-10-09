@@ -7,75 +7,79 @@
     tools:context=".FoodActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/foodBackbutton"
         android:layout_width="42dp"
         android:layout_height="41dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="43dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/fooditempic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/foodcartbutton"
         android:layout_width="82dp"
         android:layout_height="48dp"
         android:layout_marginStart="264dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/fooditempic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/foodBackbutton"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/fooditempic"
         android:layout_width="398dp"
         android:layout_height="284dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/foodBackbutton"
         app:srcCompat="@drawable/popularfood1" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/fooditemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Dhosa"
+        android:textSize="34dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/foodratingBar"
         android:layout_width="245dp"
         android:layout_height="44dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
+        android:clickable="false"
+        android:contextClickable="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/fooditemname" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/foodRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:text="2.3"
-        app:layout_constraintStart_toEndOf="@+id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintStart_toEndOf="@+id/foodratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/foodAdd"
         android:layout_width="49dp"
         android:layout_height="39dp"
         android:layout_marginStart="100dp"
@@ -83,8 +87,8 @@
         android:background="@color/Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.924"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/fooditemname"
+        app:layout_constraintTop_toBottomOf="@+id/fooditempic"
         app:srcCompat="@drawable/ic_heart" />
 
     <TextView
@@ -93,19 +97,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="22dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
         android:text="₹"
+        android:textColor="@color/Green"
+        android:textSize="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/foodItemprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="22dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
         android:text="199"
+        android:textColor="@color/Green"
+        android:textSize="28dp"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
 
     <TextView
         android:id="@+id/textView7"
@@ -115,14 +125,13 @@
         android:layout_marginTop="60dp"
         android:text="Product Description:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/FoodCartaddButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/ic_group_1675"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
