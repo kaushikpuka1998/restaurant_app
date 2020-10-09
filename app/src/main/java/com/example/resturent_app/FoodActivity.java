@@ -90,7 +90,7 @@ public class FoodActivity extends AppCompatActivity {
                         String itemvalue =  intent.getStringExtra("price");
                         int itempvalint = Integer.parseInt(itemvalue);
                         int cnt = Integer.parseInt(count);
-                        if(cnt<6)
+                        if(cnt<=6)
                         {
                             cnt++;
                             int tot =(cnt*itempvalint);
@@ -99,7 +99,7 @@ public class FoodActivity extends AppCompatActivity {
                             bottomsheet_grantotal.setText(String.valueOf(tot));
                         }else
                         {
-                            Toast.makeText(FoodActivity.this, "You can Buy Highest 6 Quantity", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FoodActivity.this, "You can Buy Highest 7 Quantity", Toast.LENGTH_SHORT).show();
                         }
 
                     }
