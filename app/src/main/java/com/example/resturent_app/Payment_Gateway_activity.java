@@ -145,7 +145,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             map.put("Total Amount",total);
             map.put("OrderID:",refValue);
 
-            mRef.child("Order").child(CurrentDate).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            mRef.child("Order").child(Username).child(CurrentDate).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     Log.i("Complete","Complete");
