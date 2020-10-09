@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/bottomitemname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="Item"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/bottomplus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_group_401" />
+
+    <ImageButton
+        android:id="@+id/bottomminus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+
+        app:layout_constraintStart_toEndOf="@+id/bottomcount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_group_400" />
+
+    <TextView
+        android:id="@+id/bottomcount"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="1"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@+id/bottomplus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bottomprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="Price"
+        app:layout_constraintLeft_toRightOf="@id/bottomRupee"
+        app:layout_constraintTop_toBottomOf="@+id/bottomitemname" />
+
+    <TextView
+        android:id="@+id/bottomRupee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="₹"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomitemname" />
+
+    <Button
+        android:id="@+id/bottom_pay_here"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="196dp"
+        android:background="@drawable/redbutton"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="Pay Here"
+        android:textAllCaps="false"
+        android:textColor="@color/White"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomplus" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="195dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+
+        android:text="Item-Total:"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bottomsheet_grantotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginBottom="88dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="GrandPrice"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_pay_here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/bottomplus"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:text="₹"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/bottomsheet_grantotal"
+        app:layout_constraintRight_toLeftOf="@id/bottomsheet_grantotal"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/bottomcount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

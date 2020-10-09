@@ -31,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toEndOf="@+id/foodBackbutton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
+        app:srcCompat="@drawable/shop_bag"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -73,8 +73,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="78dp"
         android:text="2.3"
+        android:textSize="28dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
         app:layout_constraintStart_toEndOf="@+id/foodratingBar"
         app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
 
@@ -124,15 +126,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
         android:text="Product Description:"
+        android:fontFamily="@font/ubuntu_mono_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
 
     <Button
-        android:id="@+id/FoodCartaddButton"
-        android:layout_width="match_parent"
+        android:id="@+id/foodaddtocart"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:background="@drawable/ic_group_1675"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="5dp"
+        android:text="Add To the Cart"
+        android:textAllCaps="false"
+        android:textSize="27dp"
+        android:fontFamily="@font/ubuntu_mono_bold"
+        android:background="@drawable/greenshape"
         android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
