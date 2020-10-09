@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,6 +40,7 @@ public class FoodActivity extends AppCompatActivity {
         back = findViewById(R.id.foodBackbutton);
 
 
+
         name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
         rating = intent.getStringExtra("rating");
@@ -68,11 +70,12 @@ public class FoodActivity extends AppCompatActivity {
                 bottomSheetDialog.show();//If  .show not used then bottomsheet will not come
                 bottomSheetDialog.setCanceledOnTouchOutside(true);
 
-                TextView bottomitemname = bottomSheetDialog.findViewById(R.id.bottomitemname);
+                final TextView bottomitemname = bottomSheetDialog.findViewById(R.id.bottomitemname);
                 final TextView bottomprice = bottomSheetDialog.findViewById(R.id.bottomprice);
                 ImageButton bottomplus =  bottomSheetDialog.findViewById(R.id.bottomplus);
                 ImageButton bottomminus =  bottomSheetDialog.findViewById(R.id.bottomminus);
                 final TextView bottomcount =bottomSheetDialog.findViewById(R.id.bottomcount);
+
                 final TextView bottomsheet_grantotal = bottomSheetDialog.findViewById(R.id.bottomsheet_grantotal);
 
                 Button pay_here = bottomSheetDialog.findViewById(R.id.bottom_pay_here);
@@ -95,7 +98,7 @@ public class FoodActivity extends AppCompatActivity {
                             cnt++;
                             int tot =(cnt*itempvalint);
                             bottomcount.setText(String.valueOf(cnt));
-                            System.out.println(tot);
+                            //System.out.println(tot);
                             bottomsheet_grantotal.setText(String.valueOf(tot));
                         }else
                         {
@@ -108,6 +111,18 @@ public class FoodActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(FoodActivity.this, "Discarded One", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                pay_here.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent u = new Intent(getApplicationContext(),Payment_Gateway_activity.class);
+                        u.putExtra("val",bottomsheet_grantotal.getText().toString());
+                        u.putExtra("item",bottomitemname.getText().toString());
+                        u.putExtra("Quantity:",bottomcount.getText().toString());
+                        u.putExtra("Username","Kaushik Ghosh");
+                        startActivity(u);
                     }
                 });
 

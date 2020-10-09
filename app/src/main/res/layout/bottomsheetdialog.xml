@@ -59,6 +59,7 @@
         android:layout_marginTop="7dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Price"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/bottomRupee"
         app:layout_constraintTop_toBottomOf="@+id/bottomitemname" />
 
@@ -70,6 +71,7 @@
         android:layout_marginTop="7dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="₹"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomitemname" />
 
@@ -80,7 +82,7 @@
         android:layout_marginTop="196dp"
         android:background="@drawable/redbutton"
         android:fontFamily="@font/ubuntu_mono_bold"
-        android:text="Pay Here"
+        android:text="Place Order"
         android:textAllCaps="false"
         android:textColor="@color/White"
         android:textSize="14dp"
@@ -92,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="215dp"
         android:fontFamily="@font/ubuntu_mono_bold"
 
         android:text="Item-Total:"
