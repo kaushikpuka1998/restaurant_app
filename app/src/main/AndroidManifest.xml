@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Payment_Gateway_activity"></activity>
         <activity android:name=".SplashScreenActivity">
             <intent-filter>

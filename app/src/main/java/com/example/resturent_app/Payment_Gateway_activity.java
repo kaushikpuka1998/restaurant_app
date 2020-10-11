@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
 import java.text.DateFormat;
+import java.time.chrono.HijrahChronology;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,7 +24,10 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 
+import com.example.resturent_app.databinding.ActivityMainBinding;
+import com.google.firebase.database.annotations.NotNull;
 
+import com.google.firebase.database.core.Context;
 import com.razorpay.Payment;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -40,18 +47,42 @@ import org.json.JSONObject;
 
 
 
+
 public class Payment_Gateway_activity extends AppCompatActivity implements PaymentResultListener {
+
+
+    //Payu
+    /*private String email="kaushikghosh199832@gmail.com";
+    private String phone = "8159924565";
+    private String merchantname = "Food Grazo";
+    private String surl ="gs://restaurentapp-329df.appspot.com/success";
+    private String furl ="gs://restaurentapp-329df.appspot.com/failure";*/
+
 
 
     private static final String TAG = Payment_Gateway_activity.class.getSimpleName();
     Button razpbutton,gpayButton,payubutton;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-    private String refValue="";
+    private String refValue;
+    private String transnote ;
+
+
+
+    //Gpay
+    private ActivityMainBinding binding;
+    String name = "Kaushik Ghosh";
+    String UPIid="9775288755@ybl";
+    Uri uri;
+    String status;
+    public static final String GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user";
+    int GOOGLE_PAY_REQUEST_CODE = 123;
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(R.layout.activity_payment__gateway_activity);
 
@@ -61,7 +92,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
         payubutton = findViewById(R.id.Payubutton);
 
         Intent u = getIntent();
-        String  val = u.getStringExtra("val");
+        final String  val = u.getStringExtra("val");
         final int y = Integer.parseInt(val);
         razpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,17 +103,129 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
         gpayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Payment_Gateway_activity.this, "GPay gateway Selected", Toast.LENGTH_SHORT).show();
-            }
-        });
-        payubutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Payment_Gateway_activity.this, "Payu gateway Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Payment_Gateway_activity.this, "GPay gateway Selected", Toast.LENGTH_SHORT).show();
+                transnote=String.valueOf(System.currentTimeMillis());
+                if(!val.isEmpty())
+                {
+                    uri = getUPIPUri(name,UPIid,transnote,val);
+                    payWithGPay();
+                }
+
+
+
+
+
             }
         });
 
     }
+
+    private void payWithGPay() {
+        if (isAppInstalled(GOOGLE_PAY_PACKAGE_NAME))
+        {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(uri);
+                intent.setPackage(GOOGLE_PAY_PACKAGE_NAME);
+                startActivityForResult(intent,GOOGLE_PAY_REQUEST_CODE);
+        }else
+        {
+            Toast.makeText(this, "Please Install GPay", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onActivityResult(int requestCode,int resultcode,Intent data) {
+
+        super.onActivityResult(requestCode, resultcode, data);
+        if(data!=null)
+        {
+            status = data.getStringExtra("Status").toLowerCase();
+        }
+        if((RESULT_OK == resultcode) && (status.equals("success")))
+        {
+            Toast.makeText(this, "Transaction Successful", Toast.LENGTH_LONG).show();
+
+            Intent l = getIntent();
+            String  Username = l.getStringExtra("Username");
+            String item = l.getStringExtra("item");
+            String total = l.getStringExtra("val");
+            String qt = l.getStringExtra("Quantity:");
+
+
+            mDatabase = FirebaseDatabase.getInstance();
+            mRef = mDatabase.getReference();
+
+            Calendar calender = Calendar.getInstance();
+            String CurrentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calender.getTime());
+
+            HashMap<String,Object> map= new HashMap<>();
+
+
+            map.put("Username:",Username);
+            map.put("Item",item);
+            map.put("Total Amount",total);
+            map.put("OrderID:",transnote);
+            map.put("Quantity",qt);
+            map.put("Payment Done By:","GPay Gateway");
+            map.put("Date:",CurrentDate);
+
+            mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Log.i("Complete","Successfully Added Data into Firebase");
+
+
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i("failure","Failure to add data in firebase");
+                }
+            });
+
+            Intent df = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(df);
+
+
+
+
+        }else
+        {
+            Toast.makeText(this, "Transaction Failed", Toast.LENGTH_LONG).show();
+        }
+    }
+    private boolean isAppInstalled(String uri)
+    {
+        PackageManager pm = getPackageManager();
+        boolean app_installed = false;
+        try {
+            pm.getPackageInfo(uri,PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        }catch(PackageManager.NameNotFoundException e)
+        {
+           Log.d("error:",e.getMessage());
+        }
+
+        return app_installed;
+    }
+
+
+    private static Uri getUPIPUri(String name,String upiID,String transNote,String amount)
+    {
+            return new Uri.Builder()
+                    .scheme("upi")
+                    .authority("pay")
+                    .appendQueryParameter("pa", upiID)
+                    .appendQueryParameter("pn", name)
+
+
+                    .appendQueryParameter("tn", transNote)
+                    .appendQueryParameter("am", amount)
+                    .appendQueryParameter("cu","INR")
+                    .build();
+    }
+
     long refval;
     public void startPayment(float amount)
     {
