@@ -20,6 +20,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 
+
 import com.razorpay.Payment;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -43,10 +44,11 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
 
 
     private static final String TAG = Payment_Gateway_activity.class.getSimpleName();
-    Button razpbutton;
+    Button razpbutton,gpayButton,payubutton;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private String refValue="";
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,8 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
 
 
         razpbutton = findViewById(R.id.RazorpayButton);
+        gpayButton = findViewById(R.id.GpayButton);
+        payubutton = findViewById(R.id.Payubutton);
 
         Intent u = getIntent();
         String  val = u.getStringExtra("val");
@@ -63,6 +67,18 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             @Override
             public void onClick(View view) {
                 startPayment(y*100);
+            }
+        });
+        gpayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Payment_Gateway_activity.this, "GPay gateway Selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+        payubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Payment_Gateway_activity.this, "Payu gateway Selected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,7 +121,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             options.put("name", "Food Grazo");
             options.put("description", "Reference No."+refval);
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-            //options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
+            //options.put("order_id", refValue);//from response of step 3.
             //options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
             options.put("receipt",refValue);
@@ -129,6 +145,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             String  Username = l.getStringExtra("Username");
             String item = l.getStringExtra("item");
             String total = l.getStringExtra("val");
+            String qt = l.getStringExtra("Quantity:");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -144,8 +161,11 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             map.put("Item",item);
             map.put("Total Amount",total);
             map.put("OrderID:",refValue);
+            map.put("Quantity",qt);
+            map.put("Payment Done By:","Razorpay Gateway");
+            map.put("Date:",CurrentDate);
 
-            mRef.child("Order").child(Username).child(CurrentDate).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     Log.i("Complete","Complete");
