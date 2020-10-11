@@ -7,5 +7,10 @@
     <color name="Red">#FF0258</color>
     <color name="Black">#000000</color>
     <color name="Green">#71F176</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="Pink">#BB28D5</color>
+    <color name="violet">#5300E2</color>
+
+
 
 </resources>

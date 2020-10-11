@@ -4,16 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.resturent_app.Retrofit.ApiInterface;
 import com.example.resturent_app.Retrofit.RetrofitClient;
 import com.example.resturent_app.model.Allmenu;
 import com.example.resturent_app.model.FoodDatum;
 import com.example.resturent_app.model.Popular;
 import com.example.resturent_app.model.Recommended;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
 
@@ -28,14 +35,32 @@ public class MainActivity extends AppCompatActivity {
     PopularAdapter popularAdapter;
     RecommendedAdapter recommendedAdapter;
     AllMenuAdapter allMenuAdapter;
+    CircularImageView profile;
     RecyclerView popularRecyclerView,recommendedRecyclerView,Allmenurecycleview ;
     EditText search;
+
+    String Username;
+    GoogleSignInClient mgoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+
+        mgoogleSignInClient = GoogleSignIn.getClient(this,gso);
+
+        profile = findViewById(R.id.cart);
+        GoogleSignInAccount gacc = GoogleSignIn.getLastSignedInAccount(this);
+        if(gacc!=null)
+        {
+            Username = gacc.getDisplayName();
+            Uri photourl = gacc.getPhotoUrl();
+
+            Glide.with(this).load(String.valueOf(photourl)).into(profile);
+        }
 
         search = (EditText)findViewById(R.id.searchbar);
         apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
