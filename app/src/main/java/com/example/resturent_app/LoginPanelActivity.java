@@ -76,7 +76,7 @@ public class LoginPanelActivity extends AppCompatActivity {
 
         facebooksignIn = findViewById(R.id.facebookloginbutton);
         facebookob.setReadPermissions(Arrays.asList(
-                "public_profile", "email", "user_birthday", "user_friends"));
+                "public_profile", "email"));
         callbackManager = CallbackManager.Factory.create();
 
         facebooksignIn.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +84,9 @@ public class LoginPanelActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                loginWithFB();
+
                 facebookob.performClick();
+                loginWithFB();
             }
         });
     }
@@ -100,6 +101,8 @@ public class LoginPanelActivity extends AppCompatActivity {
                 AccessToken accessToken = loginResult.getAccessToken();
                 Profile profile = Profile.getCurrentProfile();
 
+                Intent y= new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(y);
                 // Facebook Email address
 
                 GraphRequest request = GraphRequest.newMeRequest(
@@ -115,10 +118,11 @@ public class LoginPanelActivity extends AppCompatActivity {
                                     FEmail = object.getString("email");
                                     Log.v("Email = ", " " + FEmail);
 
+
+
                                     Toast.makeText(getApplicationContext(), "Email " + FEmail, Toast.LENGTH_LONG).show();
-                                    Toast.makeText(LoginPanelActivity.this, "Congrats", Toast.LENGTH_SHORT).show();
-                                    Intent y= new Intent(getApplicationContext(),MainActivity.class);
-                                    startActivity(y);
+
+
 
 
 

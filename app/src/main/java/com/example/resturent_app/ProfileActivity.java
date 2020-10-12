@@ -70,7 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-       gacc = GoogleSignIn.getLastSignedInAccount(this);
+       gacc = GoogleSignIn.getLastSignedInAccount(this);//for Google
         if(gacc!=null)
         {
             Username.setText(gacc.getDisplayName());
@@ -78,17 +78,16 @@ public class ProfileActivity extends AppCompatActivity {
             Uri photourl = gacc.getPhotoUrl();
 
 
-            Glide.with(this).load(String.valueOf(photourl)).into(profile);
+            Glide.with(this).load(String.valueOf(photourl)).into(profile);//image pasting
         }else
         {
             if(accessToken!=null && !accessToken.isExpired())
             {
                 Username.setText(pf.getName());
                 usermail.setText(pf.getId());
-                Glide.with(this)
-                        .load("http://graph.facebook.com/"+AccessToken.USER_ID_KEY +"picture?type=square&redirect=true")
-                        .into(profile);
 
+                String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
+                Picasso.get().load(photourl).into(profile);
 
             }
         }

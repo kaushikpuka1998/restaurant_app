@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         });
         GoogleSignInAccount gacc = GoogleSignIn.getLastSignedInAccount(this);
 
-        Intent lo = getIntent();
+
 
 
         if(gacc!=null)
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 if(isLoggedIn)
                 {
 
-                    String photourl =  "https://graph.facebook.com/" + accessToken.getUserId() +"/picture?return_ssl_resources=1";
+                    String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
                     Picasso.get().load(photourl).into(profile);
                 }else
                 {
