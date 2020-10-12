@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class FoodActivity extends AppCompatActivity {
@@ -121,7 +123,7 @@ public class FoodActivity extends AppCompatActivity {
                         u.putExtra("val",bottomsheet_grantotal.getText().toString());
                         u.putExtra("item",bottomitemname.getText().toString());
                         u.putExtra("Quantity:",bottomcount.getText().toString());
-                        u.putExtra("Username","Kaushik Ghosh");
+                        u.putExtra("Username", GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getDisplayName());
                         startActivity(u);
                     }
                 });

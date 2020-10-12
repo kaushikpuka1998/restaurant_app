@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,11 +18,16 @@ import com.example.resturent_app.model.Allmenu;
 import com.example.resturent_app.model.FoodDatum;
 import com.example.resturent_app.model.Popular;
 import com.example.resturent_app.model.Recommended;
+import com.facebook.AccessToken;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,24 +49,64 @@ public class MainActivity extends AppCompatActivity {
     String Username;
     GoogleSignInClient mgoogleSignInClient;
 
+    FirebaseAuth firebaseAuth;
+    AccessToken accessToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
 
         mgoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
+
+
+
         profile = findViewById(R.id.cart);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent g = new Intent(getApplicationContext(),ProfileActivity.class);
+                startActivity(g);
+
+            }
+        });
         GoogleSignInAccount gacc = GoogleSignIn.getLastSignedInAccount(this);
+
+        Intent lo = getIntent();
+
+
         if(gacc!=null)
         {
             Username = gacc.getDisplayName();
             Uri photourl = gacc.getPhotoUrl();
 
             Glide.with(this).load(String.valueOf(photourl)).into(profile);
+        }else
+        {
+
+                if(isLoggedIn)
+                {
+
+                    String photourl =  "https://graph.facebook.com/" + accessToken.getUserId() +"/picture?return_ssl_resources=1";
+                    Picasso.get().load(photourl).into(profile);
+                }else
+                {
+                    Intent y = new Intent(getApplicationContext(),LoginPanelActivity.class);
+                    startActivity(y);
+                }
+
         }
 
         search = (EditText)findViewById(R.id.searchbar);
@@ -87,6 +134,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
+
 
     private  void getPopulateData(List<Popular> popularList)
     {

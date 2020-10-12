@@ -9,6 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.LoginStatusCallback;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,26 +27,43 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 public class LoginPanelActivity extends AppCompatActivity {
 
 
-    Button signInButton;
+    Button signInButton,facebooksignIn;
+    LoginButton facebookob;
     int RC_SIGN_IN =0;
+    private FirebaseAuth firebaseAuth;
 
     GoogleSignInClient mgoogleSignInClient;
+    CallbackManager callbackManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_panel);
 
+        facebookob = findViewById(R.id.facebookb);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+
+        mgoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton = findViewById(R.id.googleloginbutton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                switch(view.getId())
-                {
+                switch (view.getId()) {
                     case R.id.googleloginbutton:
                         signIn();
 
@@ -46,13 +74,93 @@ public class LoginPanelActivity extends AppCompatActivity {
             }
         });
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        facebooksignIn = findViewById(R.id.facebookloginbutton);
+        facebookob.setReadPermissions(Arrays.asList(
+                "public_profile", "email", "user_birthday", "user_friends"));
+        callbackManager = CallbackManager.Factory.create();
 
-        mgoogleSignInClient = GoogleSignIn.getClient(this,gso);
+        facebooksignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                loginWithFB();
+                facebookob.performClick();
+            }
+        });
+    }
+    String FEmail;
+    private void loginWithFB()
+    {
+
+            LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+                AccessToken accessToken = loginResult.getAccessToken();
+                Profile profile = Profile.getCurrentProfile();
+
+                // Facebook Email address
+
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(
+                                    JSONObject object,
+                                    GraphResponse response) {
+                                Log.v("LoginActivity Response ", response.toString());
+
+                                try {
+                                    FEmail = object.getString("email");
+                                    Log.v("Email = ", " " + FEmail);
+
+                                    Toast.makeText(getApplicationContext(), "Email " + FEmail, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginPanelActivity.this, "Congrats", Toast.LENGTH_SHORT).show();
+                                    Intent y= new Intent(getApplicationContext(),MainActivity.class);
+                                    startActivity(y);
+
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender, birthday");
+                request.setParameters(parameters);
+                request.executeAsync();
+
+
+            }
+
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(LoginPanelActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                Log.d("Successful:"," not Successful Facebook Integration");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(LoginPanelActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                Log.d("Successful:"," Error");
+            }
+        });
+
+
     }
 
 
 
+
+
+
+
+
+
+//Gmail Login
     private void signIn()
     {
         Intent intent = mgoogleSignInClient.getSignInIntent();
@@ -70,6 +178,10 @@ public class LoginPanelActivity extends AppCompatActivity {
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
+        }else
+        {
+
+            callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -78,8 +190,11 @@ public class LoginPanelActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            Intent ic = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(ic);
+
+            Intent y= new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(y);
+
+
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.

@@ -5,4 +5,9 @@
     <string name="all_menu">All menu</string>
     <string name="search">search</string>
     <string name="popular_this_week">Popular This Week</string>
+
+
+    <string name="facebook_app_id">763532174211742</string>
+    <string name="fb_login_protocol_scheme">fb763532174211742</string>
+
 </resources>

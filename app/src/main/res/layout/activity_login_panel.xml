@@ -27,14 +27,29 @@
         android:id="@+id/facebookloginbutton"
         android:layout_width="340dp"
         android:layout_height="62dp"
+        android:background="@drawable/facebook_button"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="34dp"
-        android:layout_marginBottom="105dp"
-        android:textAllCaps="false"
-        android:background="@drawable/facebook_button"
+        android:layout_marginBottom="108dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Sign in With Facebook" />
+        android:text="Sign in With Facebook"
+        android:textAllCaps="false" />
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebookb"
+        android:layout_width="334dp"
+        android:layout_height="62dp"
+        android:background="@drawable/facebook_button"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="108dp"
+        android:fontFamily="@font/roboto_mono"
+        android:text="Sign in With Facebook"
+        android:visibility="gone"
+        android:textAllCaps="false" />
 
     <EditText
         android:id="@+id/loginPhone"
@@ -55,7 +70,7 @@
         android:padding="15dp" />
 
     <Button
-        android:id="@+id/LoginOtpsend"
+        android:id="@+id/button3"
         android:layout_width="340dp"
         android:layout_height="62dp"
         android:background="@drawable/blacksubmit"
