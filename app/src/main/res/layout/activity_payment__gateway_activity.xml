@@ -14,8 +14,8 @@
         android:layout_marginTop="304dp"
 
 
+        android:fontFamily="@font/roboto_mono"
         android:text="Online Payments"
-        android:fontFamily="sans-serif-condensed"
         android:textColor="@color/Red"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,46 +23,35 @@
 
     <Button
         android:id="@+id/RazorpayButton"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/group_1"
-        android:fontFamily="@font/ubuntu_mono_bold"
+        android:layout_width="381dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/razrorpaybutton"
+        android:fontFamily="@font/roboto_mono"
         android:text="Razorpay"
         android:textAllCaps="false"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
         android:id="@+id/GpayButton"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:background="@drawable/group_2"
+        android:layout_width="381dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/gpaybutton"
+        android:fontFamily="@font/roboto_mono"
         android:text="Google Pay"
-        android:fontFamily="@font/ubuntu_mono_bold"
-        android:textAllCaps="false"
-        android:textSize="24dp"
+        android:layout_marginLeft="-2dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/RazorpayButton"
-        app:layout_constraintTop_toBottomOf="@+id/RazorpayButton"
-        app:layout_constraintVertical_bias="0.073" />
-
-    <Button
-        android:id="@+id/Payubutton"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-
-        android:background="@drawable/group_4"
-        android:text="Pay u"
-        android:fontFamily="@font/ubuntu_mono_bold"
         android:textAllCaps="false"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GpayButton" />
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RazorpayButton" />
 
     <ImageView
         android:id="@+id/imageView"

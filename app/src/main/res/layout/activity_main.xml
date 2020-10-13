@@ -52,6 +52,7 @@
         android:layout_marginLeft="350dp"
         android:layout_marginTop="10dp"
         app:civ_border_width="5dp"
+        android:background="@drawable/user"
 
 
        />

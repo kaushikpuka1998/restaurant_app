@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -38,13 +39,37 @@ import java.util.Arrays;
 public class LoginPanelActivity extends AppCompatActivity {
 
 
-    Button signInButton,facebooksignIn;
+    Button signInButton,facebooksignIn,PhoneSignIn;
     LoginButton facebookob;
     int RC_SIGN_IN =0;
     private FirebaseAuth firebaseAuth;
 
     GoogleSignInClient mgoogleSignInClient;
     CallbackManager callbackManager;
+    EditText phone;
+    private long backPressedtime;
+    @Override
+    public void onBackPressed() {//Double Back Pressed  and Exit Function
+
+        if(backPressedtime + 2000 >System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            Intent in = new Intent(Intent.ACTION_MAIN);
+            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            in.addCategory(Intent.CATEGORY_HOME);
+            startActivity(in);
+            finish();
+            System.exit(0);
+        }else
+        {
+            Toast.makeText(this, "Press Back again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedtime = System.currentTimeMillis();
+
+
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +77,33 @@ public class LoginPanelActivity extends AppCompatActivity {
 
         facebookob = findViewById(R.id.facebookb);
 
+        PhoneSignIn = findViewById(R.id.phonesign);
+
+        phone = findViewById(R.id.loginPhone);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
 
         mgoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        PhoneSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ph = phone.getText().toString();
+                if(!ph.isEmpty() && ph.length()==10)
+                {
+                    Intent i = new Intent(getApplicationContext(),MobileAuthenticationActivity.class);
+                    i.putExtra("Phone",ph);
+                    startActivity(i);
+                }else
+                {
+                    Toast.makeText(LoginPanelActivity.this, "Please Enter Valid Phone Number", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         signInButton = findViewById(R.id.googleloginbutton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override

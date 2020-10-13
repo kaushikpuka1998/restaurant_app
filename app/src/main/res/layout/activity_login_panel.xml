@@ -70,7 +70,7 @@
         android:padding="15dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/phonesign"
         android:layout_width="340dp"
         android:layout_height="62dp"
         android:background="@drawable/blacksubmit"

@@ -24,6 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
@@ -39,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
     AccessToken accessToken;
     Profile pf;
     LoginResult loginResult;
+    FirebaseUser firebaseUser;
 
 
     @Override
@@ -53,8 +56,9 @@ public class ProfileActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         logout = findViewById(R.id.profilelogout);
         usermail = findViewById(R.id.profileuserEmail);
-        accessToken = AccessToken.getCurrentAccessToken();
+        accessToken = AccessToken.getCurrentAccessToken();//Facebook
         pf = Profile.getCurrentProfile();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();//For Mobile
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,18 +83,20 @@ public class ProfileActivity extends AppCompatActivity {
 
 
             Glide.with(this).load(String.valueOf(photourl)).into(profile);//image pasting
-        }else
+        }else if(accessToken!=null && !accessToken.isExpired())
         {
-            if(accessToken!=null && !accessToken.isExpired())
-            {
                 Username.setText(pf.getName());
                 usermail.setText(pf.getId());
 
                 String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
                 Picasso.get().load(photourl).into(profile);
 
-            }
+        }else if(firebaseUser!=null)
+        {
+            Username.setText(firebaseUser.getPhoneNumber());
+            usermail.setText(firebaseUser.getEmail());
         }
+
 
 
 
@@ -99,7 +105,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void signOut()
         {
-        if(gacc!=null){
+        if(gacc!=null)
+        {
                 mgoogleSignInClient.signOut()
                         .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                             @Override
@@ -110,18 +117,22 @@ public class ProfileActivity extends AppCompatActivity {
                                 finish();
                             }
                         });
-            }else
+        }else if(pf!=null)
         {
-
-            if(pf!=null)
-            {
                 LoginManager.getInstance().logOut();
                 Intent y = new Intent(getApplicationContext(),LoginPanelActivity.class);
                 startActivity(y);
                 Toast.makeText(ProfileActivity.this, "You signed out Successfully", Toast.LENGTH_SHORT).show();
-            }
-
-
         }
+        else if(firebaseUser!=null)
+        {
+            FirebaseAuth.getInstance().signOut();
+            Intent y = new Intent(getApplicationContext(),LoginPanelActivity.class);
+            startActivity(y);
+            Toast.makeText(ProfileActivity.this, "You signed out Successfully", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }

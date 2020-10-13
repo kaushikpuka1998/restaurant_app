@@ -89,7 +89,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
 
         razpbutton = findViewById(R.id.RazorpayButton);
         gpayButton = findViewById(R.id.GpayButton);
-        payubutton = findViewById(R.id.Payubutton);
+
 
         Intent u = getIntent();
         final String  val = u.getStringExtra("val");
@@ -149,6 +149,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             String item = l.getStringExtra("item");
             String total = l.getStringExtra("val");
             String qt = l.getStringExtra("Quantity:");
+            String imageur = l.getStringExtra("Image");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -160,13 +161,14 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             HashMap<String,Object> map= new HashMap<>();
 
 
-            map.put("Username:",Username);
+            map.put("UserID:",Username);
             map.put("Item",item);
             map.put("Total Amount",total);
             map.put("OrderID:",transnote);
             map.put("Quantity",qt);
             map.put("Payment Done By:","GPay Gateway");
             map.put("Date:",CurrentDate);
+            map.put("Image",imageur);
 
             mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -289,6 +291,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             String item = l.getStringExtra("item");
             String total = l.getStringExtra("val");
             String qt = l.getStringExtra("Quantity:");
+            String imageur = l.getStringExtra("Image");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -300,11 +303,12 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             HashMap<String,Object> map= new HashMap<>();
 
 
-            map.put("Username:",Username);
+            map.put("UserID:",Username);
             map.put("Item",item);
             map.put("Total Amount",total);
             map.put("OrderID:",refValue);
             map.put("Quantity",qt);
+            map.put("Image",imageur);
             map.put("Payment Done By:","Razorpay Gateway");
             map.put("Date:",CurrentDate);
 

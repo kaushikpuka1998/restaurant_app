@@ -14,9 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -26,10 +31,37 @@ public class FoodActivity extends AppCompatActivity {
     RatingBar ratingBar;
     Button addtocart;
     ImageView itempic,back;
+
+    FirebaseAuth firebaseAuth;
+    GoogleSignInAccount gacc;//for google
+    AccessToken accessToken;//for facebook
+    FirebaseUser firebaseUser;//For phone sign
+
+
+
+    GoogleSignInClient mgoogleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
+
+
+
+        accessToken = AccessToken.getCurrentAccessToken();
+        final boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        gacc = GoogleSignIn.getLastSignedInAccount(this);
+
+
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+
+        mgoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
         final Intent intent = getIntent();
 
@@ -116,6 +148,20 @@ public class FoodActivity extends AppCompatActivity {
                     }
                 });
 
+                String userid ="";
+                if(isLoggedIn)//Facebook done
+                {
+                    userid = accessToken.getUserId();
+                }
+                else if(firebaseUser!=null)//Phone
+                {
+                    userid = firebaseUser.getUid();
+                }
+                else if(gacc!=null)
+                {
+                    userid = gacc.getId();
+                }
+                final String finalUserid = userid;
                 pay_here.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -123,7 +169,8 @@ public class FoodActivity extends AppCompatActivity {
                         u.putExtra("val",bottomsheet_grantotal.getText().toString());
                         u.putExtra("item",bottomitemname.getText().toString());
                         u.putExtra("Quantity:",bottomcount.getText().toString());
-                        u.putExtra("Username", GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getDisplayName());
+                        u.putExtra("Username", finalUserid);
+                        u.putExtra("Image",imageUrl);
                         startActivity(u);
                     }
                 });

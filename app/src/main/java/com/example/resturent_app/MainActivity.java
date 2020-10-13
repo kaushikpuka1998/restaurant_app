@@ -49,18 +49,49 @@ public class MainActivity extends AppCompatActivity {
     String Username;
     GoogleSignInClient mgoogleSignInClient;
 
-    FirebaseAuth firebaseAuth;
-    AccessToken accessToken;
+    FirebaseAuth firebaseAuth;//for google
+    AccessToken accessToken;//for facebook
+    FirebaseUser firebaseUser;//For phone sign
+    private long backPressedtime;
+    @Override
+    public void onBackPressed() {//Double Back Pressed  and Exit Function
+
+        if(backPressedtime + 2000 >System.currentTimeMillis())
+        {
+            super.onBackPressed();
+           Intent in = new Intent(Intent.ACTION_MAIN);
+           in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+           in.addCategory(Intent.CATEGORY_HOME);
+           startActivity(in);
+           finish();
+           System.exit(0);
+        }else
+        {
+            Toast.makeText(this, "Press Back again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedtime = System.currentTimeMillis();
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
         accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
 
 
@@ -93,21 +124,23 @@ public class MainActivity extends AppCompatActivity {
             Uri photourl = gacc.getPhotoUrl();
 
             Glide.with(this).load(String.valueOf(photourl)).into(profile);
-        }else
+        }else if(isLoggedIn)
         {
 
-                if(isLoggedIn)
-                {
+            String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
+            Picasso.get().load(photourl).into(profile);
+        }
 
-                    String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
-                    Picasso.get().load(photourl).into(profile);
-                }else
-                {
-                    Intent y = new Intent(getApplicationContext(),LoginPanelActivity.class);
-                    startActivity(y);
-                }
+        else if(firebaseUser!=null)
+        {
 
         }
+        else
+        {
+            Intent y = new Intent(getApplicationContext(),LoginPanelActivity.class);
+            startActivity(y);
+        }
+
 
         search = (EditText)findViewById(R.id.searchbar);
         apiInterface = RetrofitClient.getRetrofitInstance().create(ApiInterface.class);
