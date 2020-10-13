@@ -51,15 +51,6 @@ import org.json.JSONObject;
 public class Payment_Gateway_activity extends AppCompatActivity implements PaymentResultListener {
 
 
-    //Payu
-    /*private String email="kaushikghosh199832@gmail.com";
-    private String phone = "8159924565";
-    private String merchantname = "Food Grazo";
-    private String surl ="gs://restaurentapp-329df.appspot.com/success";
-    private String furl ="gs://restaurentapp-329df.appspot.com/failure";*/
-
-
-
     private static final String TAG = Payment_Gateway_activity.class.getSimpleName();
     Button razpbutton,gpayButton,payubutton;
     private FirebaseDatabase mDatabase;

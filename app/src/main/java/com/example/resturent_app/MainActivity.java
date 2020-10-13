@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         Allmenurecycleview = findViewById(R.id.allmenurecycle);
         allMenuAdapter= new AllMenuAdapter(this,allmenuList);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         Allmenurecycleview.setLayoutManager(layoutManager);
         Allmenurecycleview.setAdapter(allMenuAdapter);
     }

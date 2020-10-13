@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -39,11 +39,10 @@
         android:id="@+id/fooditempic"
         android:layout_width="398dp"
         android:layout_height="284dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodBackbutton"
         app:srcCompat="@drawable/popularfood1" />
 
     <TextView
@@ -51,20 +50,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="324dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Dhosa"
         android:textColor="@color/Black"
         android:textSize="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
+        app:layout_constraintStart_toStartOf="@+id/fooditempic"
+ />
 
     <RatingBar
         android:id="@+id/foodratingBar"
+        android:outlineSpotShadowColor="@color/colorAccent"
         android:layout_width="245dp"
         android:layout_height="44dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="452dp"
         android:clickable="false"
         android:contextClickable="false"
         android:max="5"
@@ -75,33 +75,31 @@
         android:id="@+id/foodRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="78dp"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="472dp"
+
+        android:layout_marginBottom="80dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="2.3"
-        android:textSize="28dp"
-        app:layout_constraintStart_toEndOf="@+id/foodratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/fooditempic" />
+        android:textSize="28dp" />
 
     <ImageView
         android:id="@+id/foodAdd"
         android:layout_width="49dp"
         android:layout_height="39dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="322dp"
         android:background="@color/Green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.924"
-        app:layout_constraintStart_toEndOf="@+id/fooditemname"
-        app:layout_constraintTop_toBottomOf="@+id/fooditempic"
         app:srcCompat="@drawable/ic_heart" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="382dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="₹"
         android:textColor="@color/Green"
@@ -113,8 +111,8 @@
         android:id="@+id/foodItemprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="382dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="199"
         android:textColor="@color/Green"
@@ -127,18 +125,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="520dp"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Product Description:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodratingBar" />
+        />
 
     <Button
         android:id="@+id/foodaddtocart"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="625dp"
         android:background="@drawable/greenshape"
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="Add To the Cart"
@@ -150,4 +147,4 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

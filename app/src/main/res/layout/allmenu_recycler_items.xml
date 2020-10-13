@@ -6,7 +6,12 @@
 
     android:layout_height="110dp"
     android:background="@drawable/group_3">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingBottom="5dp">
 
+    </ImageView>
     <ImageView
         android:id="@+id/allmenuitempic"
         android:layout_width="131dp"
