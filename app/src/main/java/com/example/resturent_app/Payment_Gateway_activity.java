@@ -48,11 +48,11 @@ import org.json.JSONObject;
 
 
 
-public class Payment_Gateway_activity extends AppCompatActivity implements PaymentResultListener {
+public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActivity implements PaymentResultListener {
 
 
     private static final String TAG = Payment_Gateway_activity.class.getSimpleName();
-    Button razpbutton,gpayButton,payubutton;
+    Button razpbutton,gpayButton;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private String refValue;
@@ -73,7 +73,7 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
 
         setContentView(R.layout.activity_payment__gateway_activity);
 
@@ -152,13 +152,13 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             HashMap<String,Object> map= new HashMap<>();
 
 
-            map.put("UserID:",Username);
+            map.put("UserID",Username);
             map.put("Item",item);
             map.put("Total Amount",total);
-            map.put("OrderID:",transnote);
+            map.put("OrderID",transnote);
             map.put("Quantity",qt);
-            map.put("Payment Done By:","GPay Gateway");
-            map.put("Date:",CurrentDate);
+            map.put("Gateway","GPay Gateway");
+            map.put("Date",CurrentDate);
             map.put("Image",imageur);
 
             mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -177,8 +177,8 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
                 }
             });
 
-            Intent df = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(df);
+            Intent lok = new Intent(getApplicationContext(),SuccessfulPaymentActivity.class);
+            startActivity(lok);
 
 
 
@@ -294,14 +294,16 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             HashMap<String,Object> map= new HashMap<>();
 
 
-            map.put("UserID:",Username);
+            map.put("UserID",Username);
             map.put("Item",item);
             map.put("Total Amount",total);
-            map.put("OrderID:",refValue);
+            map.put("OrderID",refValue);
             map.put("Quantity",qt);
             map.put("Image",imageur);
-            map.put("Payment Done By:","Razorpay Gateway");
-            map.put("Date:",CurrentDate);
+            map.put("Gateway","Razorpay Gateway");
+            map.put("Date",CurrentDate);
+
+
 
             mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -321,8 +323,10 @@ public class Payment_Gateway_activity extends AppCompatActivity implements Payme
             Toast.makeText(this, "Error in Payment"+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        Intent df = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(df);
+        Intent lok = new Intent(getApplicationContext(),SuccessfulPaymentActivity.class);
+        startActivity(lok);
+
+
     }
 
     @Override

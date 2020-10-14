@@ -99,7 +99,7 @@ public class MobileAuthenticationActivity extends AppCompatActivity {
                         otpText.setText(code);
                         verifyCode(code);
                         verifyl.setText("Verified");
-                        verifyl.setBackgroundResource(R.color.Green);
+                        verifyl.setBackgroundResource(R.color.colorAccent);
 
                     }
                 }

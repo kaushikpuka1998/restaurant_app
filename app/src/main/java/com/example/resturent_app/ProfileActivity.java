@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,8 @@ public class ProfileActivity extends AppCompatActivity {
     int RC_SIGN_IN =0;
     TextView Username,usermail;
     CircularImageView profile;
-    Button logout;
+    Button logout,goprofile;
+
     GoogleSignInClient mgoogleSignInClient;
     GoogleSignInAccount gacc;
     AccessToken accessToken;
@@ -56,9 +58,18 @@ public class ProfileActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         logout = findViewById(R.id.profilelogout);
         usermail = findViewById(R.id.profileuserEmail);
+        goprofile = findViewById(R.id.profileorder);
         accessToken = AccessToken.getCurrentAccessToken();//Facebook
         pf = Profile.getCurrentProfile();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();//For Mobile
+
+        goprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent go = new Intent(getApplicationContext(),OrderActivity.class);
+                startActivity(go);
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

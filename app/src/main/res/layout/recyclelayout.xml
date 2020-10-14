@@ -1,64 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="104dp"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        app:cardMaxElevation="20dp"
 
-        <TextView
-            android:id="@+id/Order_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
-            android:textColor="@color/Black"
-            android:text="Name" />
+        android:padding="45dp">
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:textColor="@color/Black"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="31dp"
-            android:fontFamily="@font/roboto_mono"
-            android:text="Items:"
-            android:textSize="8dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <TextView
-            android:id="@+id/No_of_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textView18"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="146dp"
-            android:layout_marginBottom="-28dp"
-            android:fontFamily="@font/roboto_mono"
-            android:text="No.Of Qnty."
-            android:textColor="@color/Black" />
+            android:padding="15dp">
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="39dp"
-            android:layout_marginBottom="23dp"
-            android:text="TextView" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/Order_Name"
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="49dp"
-        android:layout_height="47dp"
-        app:srcCompat="@drawable/asiafood1" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
 
-</androidx.cardview.widget.CardView>
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="1dp"
+                android:text="Name"
+                android:textColor="@color/Red" />
+
+            <TextView
+                android:id="@+id/No_of_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="-28dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="No.Of Qnty."
+                android:textColor="@color/Black" />
+
+            <TextView
+                android:id="@+id/Orderno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="ordered On:"
+                android:textColor="@color/Black"
+                android:textSize="12dp" />
+
+
+            <ImageView
+                android:id="@+id/itemimage"
+                android:layout_width="49dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/asiafood1" />
+
+            <TextView
+                android:id="@+id/orderdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="65dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Date"
+                android:textColor="@color/Black" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="20dp"
+                android:text="x"
+                android:textColor="@color/Black" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

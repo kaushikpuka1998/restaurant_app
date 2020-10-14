@@ -144,6 +144,22 @@ public class FoodActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(FoodActivity.this, "Discarded One", Toast.LENGTH_SHORT).show();
+                        String count = bottomcount.getText().toString();
+
+                        String itemvalue =  intent.getStringExtra("price");
+                        int itempvalint = Integer.parseInt(itemvalue);
+                        int cnt = Integer.parseInt(count);
+                        if(cnt>=2)
+                        {
+                            cnt--;
+                            int tot =(cnt*itempvalint);
+                            bottomcount.setText(String.valueOf(cnt));
+                            //System.out.println(tot);
+                            bottomsheet_grantotal.setText(String.valueOf(tot));
+                        }else
+                        {
+                            Toast.makeText(FoodActivity.this, "You have to Buy Atleast 1 Quantity", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
