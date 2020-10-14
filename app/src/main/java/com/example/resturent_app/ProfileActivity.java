@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     int RC_SIGN_IN =0;
     TextView Username,usermail;
     CircularImageView profile;
-    Button logout,goprofile;
+    Button logout,goprofile,address;
 
     GoogleSignInClient mgoogleSignInClient;
     GoogleSignInAccount gacc;
@@ -55,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         mgoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
         Username = findViewById(R.id.profileusername);
+        address = findViewById(R.id.addressdetails);
         profile = findViewById(R.id.profile);
         logout = findViewById(R.id.profilelogout);
         usermail = findViewById(R.id.profileuserEmail);
@@ -68,6 +69,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent go = new Intent(getApplicationContext(),OrderActivity.class);
                 startActivity(go);
+            }
+        });
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent r = new Intent(getApplicationContext(),AddressActivity.class);
+                startActivity(r);
             }
         });
 

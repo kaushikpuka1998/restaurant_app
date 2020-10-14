@@ -23,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class FoodActivity extends AppCompatActivity {
     AccessToken accessToken;//for facebook
     FirebaseUser firebaseUser;//For phone sign
 
+    FirebaseDatabase mDatabase;
+
 
 
 
@@ -49,7 +52,7 @@ public class FoodActivity extends AppCompatActivity {
         accessToken = AccessToken.getCurrentAccessToken();
         final boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
 
-
+        mDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 

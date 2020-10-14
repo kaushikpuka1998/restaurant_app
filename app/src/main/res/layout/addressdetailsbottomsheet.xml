@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/Add1"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="165dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_mono"
+        android:inputType="textPersonName"
+        android:hint="Address Line 1" />
+
+    <TextView
+        android:id="@+id/Textview"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="45dp"
+        android:textSize="24dp"
+        android:layout_marginLeft="120dp"
+
+        android:layout_height="wrap_content"
+        android:text="Address Details" />
+
+    <EditText
+        android:id="@+id/Add2"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginTop="235dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_mono"
+        android:inputType="textPersonName"
+        android:hint="Address Line 2" />
+
+    <EditText
+        android:id="@+id/pincd"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="295dp"
+        android:fontFamily="@font/roboto_mono"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Pincode" />
+
+    <Button
+        android:id="@+id/imageAddress"
+        android:background="@drawable/white_button_2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="400dp" />
+</RelativeLayout>
