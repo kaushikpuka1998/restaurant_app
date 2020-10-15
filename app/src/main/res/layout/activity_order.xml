@@ -8,38 +8,55 @@
     android:padding="15dp"
 
     tools:context=".OrderActivity">
-
     <TextView
-        android:id="@+id/OrderYourOrder"
-        android:layout_width="158dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="42dp"
-        android:fontFamily="@font/roboto_mono"
-        android:text="Your Orders"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/OrderYourOrder"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="Your Orders"
+            android:textColor="@color/Black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/Orderback"
-        android:layout_width="19dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toTopOf="@id/OrderYourOrder"
-        app:layout_constraintStart_toStartOf="parent"
+        <ImageView
+            android:id="@+id/Orderback"
+            android:layout_width="19dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toTopOf="@id/OrderYourOrder"
+            app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-        app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
+            app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="90dp"
+            app:cardCornerRadius="4dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewoforder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewoforder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
 
 
 </RelativeLayout>

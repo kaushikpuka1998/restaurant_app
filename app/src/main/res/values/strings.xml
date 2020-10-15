@@ -9,5 +9,6 @@
 
     <string name="facebook_app_id">763532174211742</string>
     <string name="fb_login_protocol_scheme">fb763532174211742</string>
+    <string name="select">Spinner</string>
 
 </resources>

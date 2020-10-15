@@ -1,20 +1,27 @@
 package com.example.resturent_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.resturent_app.model.address;
 import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,7 +30,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -41,7 +55,15 @@ public class FoodActivity extends AppCompatActivity {
 
     FirebaseDatabase mDatabase;
 
+    Spinner spinner;
+    ArrayList<String> arrayList;
+    ArrayAdapter arrayAdapter;
+    ValueEventListener valueEventListener;
 
+    DatabaseReference mRef;
+
+    String Username;
+    String selectedaddress;
 
 
     GoogleSignInClient mgoogleSignInClient;
@@ -77,6 +99,7 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
+
         name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
         rating = intent.getStringExtra("rating");
@@ -101,6 +124,22 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(FoodActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+
+
+
+                if(gacc!=null)
+                {
+                    Username = gacc.getId();
+
+                }else if(isLoggedIn)
+                {
+                    Username = accessToken.getUserId();
+                }
+
+                else if(firebaseUser!=null)
+                {
+                    Username = firebaseUser.getUid();
+                }
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(FoodActivity.this);
                 bottomSheetDialog.setContentView(R.layout.bottomsheetdialog);
                 bottomSheetDialog.show();//If  .show not used then bottomsheet will not come
@@ -111,8 +150,42 @@ public class FoodActivity extends AppCompatActivity {
                 ImageButton bottomplus =  bottomSheetDialog.findViewById(R.id.bottomplus);
                 ImageButton bottomminus =  bottomSheetDialog.findViewById(R.id.bottomminus);
                 final TextView bottomcount =bottomSheetDialog.findViewById(R.id.bottomcount);
+                spinner = bottomSheetDialog.findViewById(R.id.spinner);
+
+                arrayList = new ArrayList<>();
+
+
+
+                 mRef = FirebaseDatabase.getInstance().getReference().child("Address").child(Username);
+
+
+                arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
+                spinner.setAdapter(arrayAdapter);
+
+                retrivedata();
+
+                arrayList.add("Add Address");
+
+
+              spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {//Isme slight problem hua tha I selected spinner.setonclickListener but need is selectedListener
+                  @Override
+                  public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                      {
+                          selectedaddress = adapterView.getItemAtPosition(i).toString();
+                      }
+                  }
+
+                  @Override
+                  public void onNothingSelected(AdapterView<?> adapterView) {
+
+                  }
+              });
+
+
 
                 final TextView bottomsheet_grantotal = bottomSheetDialog.findViewById(R.id.bottomsheet_grantotal);
+
+
 
                 Button pay_here = bottomSheetDialog.findViewById(R.id.bottom_pay_here);
 
@@ -183,13 +256,24 @@ public class FoodActivity extends AppCompatActivity {
                 pay_here.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent u = new Intent(getApplicationContext(),Payment_Gateway_activity.class);
-                        u.putExtra("val",bottomsheet_grantotal.getText().toString());
-                        u.putExtra("item",bottomitemname.getText().toString());
-                        u.putExtra("Quantity:",bottomcount.getText().toString());
-                        u.putExtra("Username", finalUserid);
-                        u.putExtra("Image",imageUrl);
-                        startActivity(u);
+
+                        if(checku())
+                        {
+                            Intent u = new Intent(getApplicationContext(),Payment_Gateway_activity.class);
+                            u.putExtra("val",bottomsheet_grantotal.getText().toString());
+                            u.putExtra("item",bottomitemname.getText().toString());
+                            u.putExtra("Quantity:",bottomcount.getText().toString());
+                            u.putExtra("Username", finalUserid);
+                            u.putExtra("Image",imageUrl);
+                            u.putExtra("address",selectedaddress);
+                            startActivity(u);
+                        }else
+                        {
+                            Toast.makeText(FoodActivity.this, "Add Your Address", Toast.LENGTH_SHORT).show();
+                            Intent poi = new Intent(getApplicationContext(),AddressActivity.class);
+                            startActivity(poi);
+                        }
+
                     }
                 });
 
@@ -211,4 +295,37 @@ public class FoodActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    public  void retrivedata()
+    {
+        valueEventListener = mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot item:snapshot.getChildren())
+                {
+                    arrayList.add(item.getValue(address.class).toString());
+                }
+
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+    public boolean checku()
+    {
+        if(selectedaddress == "Add Address")
+        {
+           return false;
+        }
+
+        return true;
+    }
+
+    
 }

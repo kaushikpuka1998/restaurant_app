@@ -36,7 +36,7 @@ public class AddressActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     GoogleSignInAccount gacc;
 
-    EditText ad1,ad2,pin;
+    EditText ad1,ad2,pin,phn;
 
     String userid;
     DatabaseReference mRef;
@@ -58,7 +58,7 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(AddressActivity.this);
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(AddressActivity.this);
                 bottomSheetDialog.setContentView(R.layout.addressdetailsbottomsheet);
 
                 bottomSheetDialog.setCanceledOnTouchOutside(true);
@@ -68,6 +68,7 @@ public class AddressActivity extends AppCompatActivity {
                 ad1 =bottomSheetDialog. findViewById(R.id.Add1);
                 ad2 = bottomSheetDialog.findViewById(R.id.Add2);
                 pin = bottomSheetDialog.findViewById(R.id.pincd);
+                phn = bottomSheetDialog.findViewById(R.id.phonebottom);
                 imageAdd = bottomSheetDialog.findViewById(R.id.imageAddress);
                 bottomSheetDialog.show();
                 accessToken = AccessToken.getCurrentAccessToken();//Facebook
@@ -96,6 +97,7 @@ public class AddressActivity extends AppCompatActivity {
                         String addline1 = ad1.getText().toString();
                         String addline2 = ad2.getText().toString();
                         String pinc = pin.getText().toString();
+                        String phnn =  phn.getText().toString();
 
                         HashMap<String,Object> mp= new HashMap<>();
 
@@ -103,10 +105,12 @@ public class AddressActivity extends AppCompatActivity {
                         mp.put("Addresslineone",addline1);
                         mp.put("Addresslinetwo",addline2);
                         mp.put("Pincode",pinc);
+                        mp.put("Phone",phnn);
                         mRef = FirebaseDatabase.getInstance().getReference();
                         mRef.child("Address").child(userid).push().setValue(mp).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                bottomSheetDialog.hide();
                                 Toast.makeText(AddressActivity.this, "Address Addded Successfully", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {

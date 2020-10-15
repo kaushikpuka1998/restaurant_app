@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.PixelCopy;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,10 +17,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.internal.ImageRequest;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,6 +35,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Parameter;
+
+import okhttp3.internal.Util;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -43,8 +55,12 @@ public class ProfileActivity extends AppCompatActivity {
     AccessToken accessToken;
     Profile pf;
     LoginResult loginResult;
+    LoginButton lg;
     FirebaseUser firebaseUser;
 
+
+
+    public static final String[] PERMISSIONS = new String[] {"email"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +120,35 @@ public class ProfileActivity extends AppCompatActivity {
             Glide.with(this).load(String.valueOf(photourl)).into(profile);//image pasting
         }else if(accessToken!=null && !accessToken.isExpired())
         {
+
+            GraphRequest request = GraphRequest.newMeRequest(
+                    accessToken,
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+                            Log.v("LoginActivity Response ", response.toString());
+
+                            try {
+                                if(object.getString("email")!=null)//retriving Mail ID from Facebook Through Graph Request
+                                {
+                                    usermail.setText(object.getString("email"));
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,email,gender, birthday");
+            request.setParameters(parameters);
+            request.executeAsync();
                 Username.setText(pf.getName());
-                usermail.setText(pf.getId());
+
 
                 String photourl =  "http://graph.facebook.com/"+accessToken.getUserId() +"/picture?type=large";
                 Picasso.get().load(photourl).into(profile);

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FullOrderActivity">
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        app:cardElevation="34dp"
+
+        android:layout_marginTop="125dp"
+        android:layout_marginLeft="60dp"
+        app:cardCornerRadius="25dp"
+
+
+        android:padding="15dp">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+
+                android:layout_marginTop="22dp"
+                android:textColor="@color/Red"
+                android:layout_marginLeft="80dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Order Details" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="61dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Order ID:"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/Fullorderno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="137dp"
+                android:layout_marginTop="61dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/FullorderAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="91dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Amount:" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="91dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="133dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Payment Done By:" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="187dp"
+                android:layout_marginTop="133dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Gateway" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="162dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Phone  number:" />
+
+            <TextView
+                android:id="@+id/fullOrderPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="156dp"
+                android:layout_marginTop="163dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Phone" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="193dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Delivery Address:" />
+
+            <TextView
+                android:id="@+id/fullOrderAddress"
+                android:layout_width="167dp"
+                android:layout_height="44dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="219dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Address" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

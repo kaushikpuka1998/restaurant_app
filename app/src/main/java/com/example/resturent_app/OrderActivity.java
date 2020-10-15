@@ -75,7 +75,7 @@ public class OrderActivity extends AppCompatActivity {
                         .build();
 
 
-        orderRecyclerAdapter = new OrderRecyclerAdapter(options);
+        orderRecyclerAdapter = new OrderRecyclerAdapter(options,getApplicationContext());
         recyclerViewl.setItemAnimator(new DefaultItemAnimator());
 
         recyclerViewl.setAdapter(orderRecyclerAdapter);

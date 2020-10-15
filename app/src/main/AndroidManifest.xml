@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddressActivity"></activity>
+        <activity android:name=".FullOrderActivity"></activity>
+        <activity android:name=".AddressActivity" />
         <activity android:name=".SuccessfulPaymentActivity" />
         <activity android:name=".OrderActivity" />
         <activity android:name=".MobileAuthenticationActivity" />

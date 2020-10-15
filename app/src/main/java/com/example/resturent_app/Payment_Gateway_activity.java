@@ -141,6 +141,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             String total = l.getStringExtra("val");
             String qt = l.getStringExtra("Quantity:");
             String imageur = l.getStringExtra("Image");
+            String address = l.getStringExtra("address");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -160,6 +161,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             map.put("Gateway","GPay Gateway");
             map.put("Date",CurrentDate);
             map.put("Image",imageur);
+            map.put("Address",address);
 
             mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -283,6 +285,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             String total = l.getStringExtra("val");
             String qt = l.getStringExtra("Quantity:");
             String imageur = l.getStringExtra("Image");
+            String address = l.getStringExtra("address");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -302,6 +305,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             map.put("Image",imageur);
             map.put("Gateway","Razorpay Gateway");
             map.put("Date",CurrentDate);
+            map.put("Address",address);
 
 
 

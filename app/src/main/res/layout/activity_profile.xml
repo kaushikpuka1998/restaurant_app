@@ -128,6 +128,6 @@
         android:layout_marginTop="96dp"
         android:fontFamily="@font/roboto_mono"
         android:textColor="@color/Black"
-        android:text="TextView" />
+        android:text="" />
 
 </RelativeLayout>
