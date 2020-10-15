@@ -1,39 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp"
+        android:layout_marginTop="4dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+
+            <TextView
+                android:id="@+id/addf"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:textColor="@color/Black"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Addressl1" />
+
+            <TextView
+                android:id="@+id/adds"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="15dp">
-                <TextView
-                    android:id="@+id/addf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:text="Addressl1" />
+                android:layout_marginTop="36dp"
+                android:text="Addressl2"
+                android:textColor="@color/Black"
+                android:fontFamily="@font/roboto_mono"
+                />
 
-                <TextView
-                    android:id="@+id/adds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="36dp"
-                    android:text="Addressl2" />
+            <TextView
+                android:id="@+id/pind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:textColor="@color/Black"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Pincode" />
 
-                <TextView
-                    android:id="@+id/phnview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="72dp"
-                    android:text="Phone" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/phnview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Black"
+                android:fontFamily="@font/roboto_mono"
+                android:layout_marginTop="108dp"
+                android:text="Phone" />
 
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+
 
 </RelativeLayout>

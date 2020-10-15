@@ -4,29 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".AddressActivity">
 
     <ImageView
         android:id="@+id/addAddress"
-        android:layout_width="414dp"
-        android:layout_height="73dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/white_button_2"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/addaddre" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp">
+
+
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp">
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addressrecycle"
+                android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                 />
+
+
         </RelativeLayout>
-    </ScrollView>
+
+
+
 </RelativeLayout>
