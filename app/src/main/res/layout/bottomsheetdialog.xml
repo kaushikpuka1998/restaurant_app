@@ -35,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="90dp"
+            android:textColor="@color/Black"
             android:fontFamily="@font/ubuntu_mono_bold"
             android:text="Item"
             android:textSize="25dp" />
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="150dp"
             android:fontFamily="@font/ubuntu_mono_bold"
             android:text="Price"
             android:textSize="18sp"
@@ -57,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="150dp"
             android:fontFamily="@font/ubuntu_mono_bold"
             android:text="₹"
             android:textSize="18sp"
@@ -69,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="188dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="150dp"
             android:layout_marginEnd="28dp"
             android:fontFamily="@font/ubuntu_mono_bold"
             android:text="Quantity"
@@ -151,11 +152,23 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginLeft="1dp"
             android:elevation="20dp"
             android:minHeight="30dp"
+
             android:spinnerMode="dropdown" />
+
+        <EditText
+            android:id="@+id/Orderownname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="187dp"
+            android:ems="10"
+            android:fontFamily="@font/roboto_mono"
+            android:inputType="textPersonName"
+            android:hint="Name" />
 
     </RelativeLayout>
 

@@ -12,7 +12,7 @@
         android:layout_width="42dp"
         android:layout_height="41dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="43dp"
         app:layout_constraintBottom_toTopOf="@+id/fooditempic"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,28 +20,12 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ImageView
-        android:id="@+id/foodcartbutton"
-        android:layout_width="82dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/fooditempic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/foodBackbutton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/shop_bag"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
         android:id="@+id/fooditempic"
-        android:layout_width="398dp"
-        android:layout_height="284dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/popularfood1" />
 
@@ -82,17 +66,6 @@
         android:fontFamily="@font/ubuntu_mono_bold"
         android:text="2.3"
         android:textSize="28dp" />
-
-    <ImageView
-        android:id="@+id/foodAdd"
-        android:layout_width="49dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="322dp"
-        android:background="@color/Green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.924"
-        app:srcCompat="@drawable/ic_heart" />
 
     <TextView
         android:id="@+id/textView5"

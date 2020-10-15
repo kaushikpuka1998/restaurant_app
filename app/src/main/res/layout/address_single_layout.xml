@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
+        android:background="@drawable/rectangle_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
@@ -51,7 +52,18 @@
                 android:layout_marginTop="108dp"
                 android:text="Phone" />
 
+
+
         </RelativeLayout>
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="46dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="25dp"
+            app:srcCompat="@drawable/ic_location_on_black_24dp" />
+
+
     </androidx.cardview.widget.CardView>
 
 

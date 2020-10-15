@@ -33,9 +33,10 @@ import java.util.HashMap;
 public class AddressActivity extends AppCompatActivity {
 
 
-    ImageView addAddress;
+    Button addAddress;
     Button imageAdd;
     RecyclerView addressrecycle;
+    ImageView  backi;
 
     AccessToken accessToken;
     FirebaseUser firebaseUser;
@@ -51,10 +52,20 @@ public class AddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+
+
+
         addAddress = findViewById(R.id.addAddress);
         addressrecycle = findViewById(R.id.addressrecycle);
+        backi = findViewById(R.id.backImage);
 
         imageAdd = findViewById(R.id.imageAddress);
+        backi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         mRef = FirebaseDatabase.getInstance().getReference();
         accessToken = AccessToken.getCurrentAccessToken();//Facebook
@@ -155,5 +166,10 @@ public class AddressActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         alladdressRecycleradapter.stopListening();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

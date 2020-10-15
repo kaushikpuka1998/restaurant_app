@@ -6,17 +6,27 @@ public class orderdetails {
     String Image;
     String Quantity;
     String Date ;
+    String OrderID;
+    String Name;
+    String Gateway;
+    String Totalamount;
+    String Address;
 
     public orderdetails()
     {
 
     }
 
-    public orderdetails(String item, String image, String quantity, String date) {
-        this.Item = item;
-        this.Image = image;
-        this.Quantity = quantity;
-        this.Date = date;
+    public orderdetails(String item, String image, String quantity, String date, String orderID, String name, String gateway, String totalamount, String address) {
+        Item = item;
+        Image = image;
+        Quantity = quantity;
+        Date = date;
+        OrderID = orderID;
+        Name = name;
+        Gateway = gateway;
+        Totalamount = totalamount;
+        Address = address;
     }
 
     public String getItem() {
@@ -24,7 +34,7 @@ public class orderdetails {
     }
 
     public void setItem(String item) {
-        this.Item = item;
+        Item = item;
     }
 
     public String getImage() {
@@ -32,7 +42,7 @@ public class orderdetails {
     }
 
     public void setImage(String image) {
-        this.Image = image;
+        Image = image;
     }
 
     public String getQuantity() {
@@ -40,7 +50,7 @@ public class orderdetails {
     }
 
     public void setQuantity(String quantity) {
-        this.Quantity = quantity;
+        Quantity = quantity;
     }
 
     public String getDate() {
@@ -48,6 +58,46 @@ public class orderdetails {
     }
 
     public void setDate(String date) {
-        this.Date = date;
+        Date = date;
+    }
+
+    public String getOrderID() {
+        return OrderID;
+    }
+
+    public void setOrderID(String orderID) {
+        OrderID = orderID;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        this.Name = name;
+    }
+
+    public String getGateway() {
+        return Gateway;
+    }
+
+    public void setGateway(String gateway) {
+        Gateway = gateway;
+    }
+
+    public String getTotalamount() {
+        return Totalamount;
+    }
+
+    public void setTotalamount(String totalamount) {
+        Totalamount = totalamount;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
     }
 }

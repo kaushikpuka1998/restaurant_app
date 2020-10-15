@@ -7,23 +7,27 @@
     android:padding="20dp"
     tools:context=".AddressActivity">
 
-    <ImageView
+    <Button
         android:id="@+id/addAddress"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:background="@drawable/addaddre" />
+        android:background="@drawable/verifybutton"
+        android:text="Add Address"
+        android:layout_marginTop="70dp"
+        android:textAllCaps="false"
+        android:textColor="@color/White"/>
 
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp">
+            android:layout_marginTop="126dp">
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addressrecycle"
-                android:layout_marginTop="2dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -32,6 +36,23 @@
 
         </RelativeLayout>
 
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="25dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/roboto_mono"
+        android:textSize="19dp"
+        android:text="My Addresses" />
+
+    <ImageView
+        android:id="@+id/backImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
 
 
 </RelativeLayout>

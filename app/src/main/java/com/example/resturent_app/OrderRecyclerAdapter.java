@@ -40,12 +40,33 @@ public class OrderRecyclerAdapter extends FirebaseRecyclerAdapter<orderdetails, 
 
         Glide.with(holder.img.getContext()).load(model.getImage()).into(holder.img);
 
+        final String name =  model.getItem();
+        final String qua = model.getQuantity();
+        final String Date = model.getDate();
+        final String orderID = model.getOrderID();
+        final String deliver = model.getName();
+        final String gate = model.getGateway();
+        final String tot = model.getTotalamount();
+        final String add = model.getAddress();
+        final String ownername = model.getName();
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 Intent g = new Intent(context,FullOrderActivity.class);
+                g.putExtra("item",name);
+                g.putExtra("qua",qua);
+                g.putExtra("date",Date);
+                g.putExtra("orderID",orderID);
+                g.putExtra("deliver",deliver);
+                g.putExtra("gate",gate);
+                g.putExtra("tot",tot);
+                g.putExtra("add",add);
+                g.putExtra("name",ownername);
+
                 context.startActivity(g);
             }
         });

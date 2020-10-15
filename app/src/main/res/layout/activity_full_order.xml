@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".FullOrderActivity">
     <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
+        android:layout_width="340dp"
         android:layout_height="400dp"
+        android:background="@color/Pink"
         app:cardElevation="34dp"
 
         android:layout_marginTop="125dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="40dp"
         app:cardCornerRadius="25dp"
 
 
@@ -45,6 +46,7 @@
                 android:layout_marginTop="61dp"
                 android:fontFamily="@font/roboto_mono"
                 android:text="Order ID:"
+                android:textColor="@color/Black"
                 android:textSize="14dp" />
 
             <TextView
@@ -55,11 +57,12 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="137dp"
                 android:layout_marginTop="61dp"
+                android:textColor="@color/Black"
                 android:fontFamily="@font/roboto_mono"
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/FullorderAmount"
+                android:id="@+id/FullorderAmounttest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -67,10 +70,11 @@
                 android:layout_marginStart="47dp"
                 android:layout_marginTop="91dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Amount:" />
+                android:text="Amount:"
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/FullOrderAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -78,7 +82,8 @@
                 android:layout_marginStart="107dp"
                 android:layout_marginTop="91dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView18"
@@ -89,10 +94,11 @@
                 android:layout_marginStart="47dp"
                 android:layout_marginTop="133dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Payment Done By:" />
+                android:text="Payment Done By:"
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/fullOrderGateway"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -100,7 +106,8 @@
                 android:layout_marginStart="187dp"
                 android:layout_marginTop="133dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Gateway" />
+                android:text="Gateway"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -111,18 +118,20 @@
                 android:layout_marginStart="47dp"
                 android:layout_marginTop="162dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Phone  number:" />
+                android:text="Date:"
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/fullOrderPhone"
+                android:id="@+id/fullOrderDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="156dp"
+                android:layout_marginStart="96dp"
                 android:layout_marginTop="163dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Phone" />
+                android:text="date r"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -131,20 +140,69 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="46dp"
-                android:layout_marginTop="193dp"
+                android:layout_marginTop="263dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Delivery Address:" />
+                android:text="Delivery Address:"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/fullOrderAddress"
-                android:layout_width="167dp"
-                android:layout_height="44dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="47dp"
-                android:layout_marginTop="219dp"
+                android:layout_marginTop="285dp"
                 android:fontFamily="@font/roboto_mono"
-                android:text="Address" />
+                android:text="Address"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="181dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Deliver At:"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/fullOrdername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="145dp"
+
+                android:layout_marginBottom="182dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="TextView"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="49dp"
+                android:layout_marginBottom="153dp"
+                android:fontFamily="@font/roboto_mono"
+                android:text="Quantity:"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/FullOrderquantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="125dp"
+                android:layout_marginBottom="152dp"
+                android:text="TextView"
+                android:textColor="#000000" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

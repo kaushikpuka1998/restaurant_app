@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -56,6 +57,8 @@ public class FoodActivity extends AppCompatActivity {
     FirebaseDatabase mDatabase;
 
     Spinner spinner;
+
+
     ArrayList<String> arrayList;
     ArrayAdapter arrayAdapter;
     ValueEventListener valueEventListener;
@@ -150,6 +153,7 @@ public class FoodActivity extends AppCompatActivity {
                 ImageButton bottomplus =  bottomSheetDialog.findViewById(R.id.bottomplus);
                 ImageButton bottomminus =  bottomSheetDialog.findViewById(R.id.bottomminus);
                 final TextView bottomcount =bottomSheetDialog.findViewById(R.id.bottomcount);
+                final EditText deliname =bottomSheetDialog.findViewById(R.id.Orderownname);
                 spinner = bottomSheetDialog.findViewById(R.id.spinner);
 
                 arrayList = new ArrayList<>();
@@ -162,9 +166,9 @@ public class FoodActivity extends AppCompatActivity {
                 arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
                 spinner.setAdapter(arrayAdapter);
 
-                retrivedata();
+               retrivedata();
 
-                arrayList.add("Add Address");
+
 
 
               spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {//Isme slight problem hua tha I selected spinner.setonclickListener but need is selectedListener
@@ -257,38 +261,32 @@ public class FoodActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if(checku())
-                        {
-                            Intent u = new Intent(getApplicationContext(),Payment_Gateway_activity.class);
-                            u.putExtra("val",bottomsheet_grantotal.getText().toString());
-                            u.putExtra("item",bottomitemname.getText().toString());
-                            u.putExtra("Quantity:",bottomcount.getText().toString());
-                            u.putExtra("Username", finalUserid);
-                            u.putExtra("Image",imageUrl);
-                            u.putExtra("address",selectedaddress);
-                            startActivity(u);
+                        if(checku()) {
+                            if (!deliname.getText().toString().isEmpty()) {
+                                Intent u = new Intent(getApplicationContext(), Payment_Gateway_activity.class);
+                                u.putExtra("val", bottomsheet_grantotal.getText().toString());
+                                u.putExtra("item", bottomitemname.getText().toString());
+                                u.putExtra("Quantity:", bottomcount.getText().toString());
+                                u.putExtra("Username", finalUserid);
+                                u.putExtra("Image", imageUrl);
+                                u.putExtra("address", selectedaddress);
+                                u.putExtra("ownname", deliname.getText().toString());
+                                startActivity(u);
+                            } else {
+                                deliname.setError("Enter Receiver Name");
+                            }
+
                         }else
                         {
-                            Toast.makeText(FoodActivity.this, "Add Your Address", Toast.LENGTH_SHORT).show();
-                            Intent poi = new Intent(getApplicationContext(),AddressActivity.class);
-                            startActivity(poi);
+                            spinner.setBackgroundColor(Color.RED);
+                            spinner.setTag("Please Add Your Address");
+                            Toast.makeText(FoodActivity.this, "Add Your Address to the server", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                 });
-
-
-
-
-
-
-
-
-
             }
         });
-
-
     }
 
     @Override
@@ -296,14 +294,16 @@ public class FoodActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public  void retrivedata()
+    public void retrivedata()
     {
         valueEventListener = mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot item:snapshot.getChildren())
                 {
+
                     arrayList.add(item.getValue(address.class).toString());
+
                 }
 
                 arrayAdapter.notifyDataSetChanged();
@@ -313,15 +313,18 @@ public class FoodActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
+
     }
 
 
     public boolean checku()
     {
-        if(selectedaddress == "Add Address")
+        if(selectedaddress == null)
         {
-           return false;
+            return false;
         }
 
         return true;

@@ -15,6 +15,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class AlladdressRecycleradapter extends FirebaseRecyclerAdapter<address,AlladdressRecycleradapter.myViewholder> {
 
+
     public AlladdressRecycleradapter(@NonNull FirebaseRecyclerOptions<address> options, Context applicationContext) {
         super(options);
     }

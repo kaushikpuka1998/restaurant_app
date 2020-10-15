@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 
@@ -25,7 +26,9 @@ public class SuccessfulPaymentActivity extends AppCompatActivity {
             public void run() {
                 la.animate().translationY(400).setDuration(1300).setStartDelay(3000);
                 Intent a = new Intent(getApplicationContext(),MainActivity.class);
+
                 startActivity(a);
+
             }
         },5000);
 

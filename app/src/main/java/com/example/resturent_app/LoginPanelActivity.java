@@ -166,7 +166,7 @@ public class LoginPanelActivity extends AppCompatActivity {
 
 
 
-                                    Toast.makeText(getApplicationContext(), "Email " + FEmail, Toast.LENGTH_LONG).show();
+                                    
 
 
 

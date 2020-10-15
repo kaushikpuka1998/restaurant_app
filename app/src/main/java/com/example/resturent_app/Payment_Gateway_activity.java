@@ -133,7 +133,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
         }
         if((RESULT_OK == resultcode) && (status.equals("success")))
         {
-            Toast.makeText(this, "Transaction Successful", Toast.LENGTH_LONG).show();
+
 
             Intent l = getIntent();
             String  Username = l.getStringExtra("Username");
@@ -142,6 +142,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             String qt = l.getStringExtra("Quantity:");
             String imageur = l.getStringExtra("Image");
             String address = l.getStringExtra("address");
+            String deliownname = l.getStringExtra("ownname");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -155,13 +156,14 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
 
             map.put("UserID",Username);
             map.put("Item",item);
-            map.put("Total Amount",total);
+            map.put("Totalamount",total);
             map.put("OrderID",transnote);
             map.put("Quantity",qt);
             map.put("Gateway","GPay Gateway");
             map.put("Date",CurrentDate);
             map.put("Image",imageur);
             map.put("Address",address);
+            map.put("Name",deliownname);
 
             mRef.child("Order").child(Username).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -278,7 +280,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
     @Override
     public void onPaymentSuccess(String s) {
         try {
-            Toast.makeText(this, "Payment Successful", Toast.LENGTH_LONG).show();
+
             Intent l = getIntent();
             String  Username = l.getStringExtra("Username");
             String item = l.getStringExtra("item");
@@ -286,6 +288,7 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
             String qt = l.getStringExtra("Quantity:");
             String imageur = l.getStringExtra("Image");
             String address = l.getStringExtra("address");
+            String deliownname = l.getStringExtra("ownname");
 
 
             mDatabase = FirebaseDatabase.getInstance();
@@ -299,13 +302,14 @@ public class Payment_Gateway_activity<ActivityMainBinding> extends AppCompatActi
 
             map.put("UserID",Username);
             map.put("Item",item);
-            map.put("Total Amount",total);
+            map.put("Totalamount",total);
             map.put("OrderID",refValue);
             map.put("Quantity",qt);
             map.put("Image",imageur);
             map.put("Gateway","Razorpay Gateway");
             map.put("Date",CurrentDate);
             map.put("Address",address);
+            map.put("Name",deliownname);
 
 
 
