@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "348924266474-jeeu99csg2cj5981vab89tlvaagpucre.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.resturentapp",
+            "certificate_hash": "604052f91bf6298b6855b65df67f1b50966b84f2"
+          }
+        },
+        {
+          "client_id": "348924266474-0ak6unive1t87dqmgn6qrnct2ovgnrq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.resturentapp",
+            "certificate_hash": "2aac128eac3da82a581e4d06d41d28016891f5fe"
+          }
+        },
+        {
           "client_id": "348924266474-c8n935lrl3apf7uladliekp3tuf99sqi.apps.googleusercontent.com",
           "client_type": 3
         }
