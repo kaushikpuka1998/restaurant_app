@@ -12,7 +12,7 @@
   <img src="https://user-images.githubusercontent.com/52675676/96264502-e214bc00-0fe1-11eb-9da3-c5b23a19f045.jpg" width="200" height="400" />
   <img src="https://user-images.githubusercontent.com/52675676/96264509-e3de7f80-0fe1-11eb-8f76-94eb0fd373eb.jpg" width="200" height="400" />
 </p>
-[Demo Video](https://www.linkedin.com/feed/update/urn:li:activity:6722866669431222272/)
+
 Go to the Release Page,
 Project Each page Screenshot uploaded there and present Download Link
 
